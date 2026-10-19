@@ -1,0 +1,805 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>استوديو النهرين</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: هيرو كحلي ليلي بقوسين من الصور، شريط إعلانات رفيع، معرض فسيفسائي، نموذج حجز بجانب قوس صورة، ثم الموقع.
+   Palette: كحلي ليلي (bg) · عاج (ink) · ذهبي شامبانيا (accent). الوضع الفاتح: لؤلؤي بارد مع برونزي ذهبي.
+   الجرأة في مكان واحد: أقواس الصور المؤطرة بخط ذهبي رفيع في الهيرو. */
+:root{
+  --bg:#0A101C; --surface:#101A2C; --surface-2:#16223A; --ink:#EDE8DC; --muted:#9BA5B8; --line:#243049;
+  --accent:#D4B06A; --on-accent:#10151F; --accent-soft:rgba(212,176,106,.12); --accent-line:rgba(212,176,106,.38);
+  --st-p:#E6B655; --st-c:#5FD0A2; --st-d:#86AEEF; --st-x:#F08F83; --focus:#8FB6F2;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.35);
+  --hero-1:#0D1830; --hero-2:#070C17; --hero-ink:#F1ECE0; --hero-muted:#A3ADC0;
+  --gold:#D9B772; --gold-hi:#F3E2B8; --gold-lo:#B08A45;
+  --f-display:'Aref Ruqaa','Amiri',serif; --f-body:'IBM Plex Sans Arabic',Tahoma,system-ui,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#F2F3F5; --surface:#FFFFFF; --surface-2:#E8EAEE; --ink:#111B2F; --muted:#586174; --line:#D8DBE2;
+    --accent:#86621F; --on-accent:#FFFFFF; --accent-soft:rgba(134,98,31,.10); --accent-line:rgba(134,98,31,.38);
+    --st-p:#955700; --st-c:#14694A; --st-d:#2A5AA3; --st-x:#A33A2E; --focus:#1F5FBF;
+    --shadow:0 1px 2px rgba(17,27,47,.06),0 16px 36px rgba(17,27,47,.10);
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F2F3F5; --surface:#FFFFFF; --surface-2:#E8EAEE; --ink:#111B2F; --muted:#586174; --line:#D8DBE2;
+  --accent:#86621F; --on-accent:#FFFFFF; --accent-soft:rgba(134,98,31,.10); --accent-line:rgba(134,98,31,.38);
+  --st-p:#955700; --st-c:#14694A; --st-d:#2A5AA3; --st-x:#A33A2E; --focus:#1F5FBF;
+  --shadow:0 1px 2px rgba(17,27,47,.06),0 16px 36px rgba(17,27,47,.10);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:16px}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.25;text-wrap:balance;margin:0}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+
+/* الرأس */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:32px;height:32px;flex:none}
+.brand b{font-family:var(--f-display);font-size:1.55rem;line-height:1}
+.nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.nav a,.nav button{padding:6px 14px;border-radius:999px;text-decoration:none;font-size:.95rem;border:0;background:none;cursor:pointer;color:var(--ink)}
+.nav a:hover,.nav button:hover{background:var(--accent-soft)}
+.nav .adm{border:1px solid var(--accent-line);color:var(--accent);font-weight:500}
+
+/* الأزرار */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:10px;border:1px solid transparent;font-weight:600;cursor:pointer;text-decoration:none;min-height:46px}
+.btn.pri{background:var(--accent);color:var(--on-accent)}
+.btn.pri:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--accent)}
+.btn.wa{background:#1F8F4E;color:#fff}
+.btn.sm{padding:6px 12px;min-height:34px;font-size:.88rem;border-radius:8px}
+.btn.lg{width:100%;min-height:54px;font-size:1.05rem}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* الهيرو */
+.hero{position:relative;overflow:hidden;color:var(--hero-ink);background:radial-gradient(900px 520px at 85% -10%,rgba(217,183,114,.16),transparent 62%),linear-gradient(180deg,var(--hero-1),var(--hero-2))}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cpath d='M36 3l7 17 17-7-7 17 17 7-17 7 7 17-17-7-7 17-7-17-17 7 7-17-17-7 17-7-7-17 17 7z' fill='none' stroke='%23D9B772' stroke-opacity='.1'/%3E%3C/svg%3E");-webkit-mask-image:radial-gradient(ellipse at 15% 45%,#000,transparent 70%);mask-image:radial-gradient(ellipse at 15% 45%,#000,transparent 70%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:72px 92px}
+.eyebrow{display:inline-flex;gap:10px;align-items:center;font-size:.85rem;letter-spacing:.08em;color:var(--hero-muted);margin-bottom:16px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+.hero h1{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:16px;line-height:1.05}
+.hero h1 .pre{font-size:clamp(1.5rem,4vw,2.4rem);color:var(--hero-muted);letter-spacing:.06em;padding-inline-start:.15em}
+.hero h1 em{font-style:normal;font-size:clamp(4.2rem,13vw,8.2rem);line-height:1.12;padding-block:.04em;color:var(--gold);background:linear-gradient(180deg,var(--gold-hi) 8%,var(--gold) 55%,var(--gold-lo) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 8px 24px rgba(217,183,114,.2))}
+.hero .rule{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--gold);font-size:.95rem;letter-spacing:.04em}
+.hero .rule::before{content:"";width:46px;height:1px;background:var(--gold)}
+.hero p.lead{color:var(--hero-muted);max-width:46ch;font-size:1.05rem;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .btn.pri{background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#10151F}
+.hero .btn.ghost{border-color:rgba(241,236,224,.3);color:var(--hero-ink)}
+.hero .btn.ghost:hover{border-color:var(--gold)}
+.hero-facts{display:flex;flex-wrap:wrap;margin-top:38px;color:var(--hero-muted);font-size:.88rem}
+.hero-facts>div{padding-inline:22px;border-inline-start:1px solid rgba(217,183,114,.3)}
+.hero-facts>div:first-child{padding-inline-start:0;border:0}
+.hero-facts b{display:block;color:var(--hero-ink);font-size:1.1rem;font-weight:600}
+.arches{position:relative;width:100%;max-width:470px;margin-inline:auto;aspect-ratio:4/5.1}
+.arch{position:absolute;overflow:hidden;background:var(--hero-2)}
+.arch img{display:block;width:100%;height:100%;object-fit:cover}
+.arch.main{inset-block:0;inset-inline-end:0;width:75%;border-radius:999px 999px 18px 18px;outline:1px solid rgba(217,183,114,.5);outline-offset:10px}
+.arch.main img{object-position:50% 30%}
+.arch.sm{inset-inline-start:0;bottom:7%;width:44%;aspect-ratio:3/4;border-radius:999px 999px 14px 14px;border:6px solid var(--hero-2);box-shadow:0 20px 40px rgba(0,0,0,.45)}
+.arch.sm img{object-position:50% 22%}
+.arch-tag{position:absolute;inset-inline-end:8%;bottom:-14px;background:var(--hero-2);border:1px solid rgba(217,183,114,.5);color:var(--gold);padding:4px 16px;border-radius:999px;font-size:.82rem;letter-spacing:.06em}
+
+/* شريط الإعلانات */
+.ribbon{background:var(--surface);border-bottom:1px solid var(--line)}
+.ads{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.ad{padding:20px 22px;min-width:0;border-inline-start:1px solid var(--line)}
+.ad:first-child{border-inline-start:0;padding-inline-start:0}
+.ad small{color:var(--accent);font-weight:600;letter-spacing:.06em;display:block}
+.ad p{margin-top:2px;font-size:.95rem;color:var(--muted)}
+
+/* الأقسام */
+.sec{padding-block:84px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+.kicker{display:flex;align-items:center;gap:10px;color:var(--accent);font-size:.85rem;letter-spacing:.1em;margin-bottom:8px}
+.kicker::before{content:"";width:30px;height:1px;background:var(--accent)}
+.sec-head h2{font-size:clamp(2rem,4.5vw,2.9rem)}
+.sec-head p{color:var(--muted);max-width:52ch;margin-top:6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:6px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:.9rem}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+
+/* المعرض */
+.gallery{column-count:3;column-gap:14px}
+.tile{position:relative;display:block;break-inside:avoid;margin:0 0 14px;border-radius:6px;overflow:hidden;background:var(--surface-2)}
+.tile-btn{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.tile img{display:block;width:100%;height:auto;transition:transform .9s ease}
+.tile:hover img{transform:scale(1.04)}
+.tile::after{content:"";position:absolute;inset:9px;border:1px solid rgba(255,255,255,.3);border-radius:3px;pointer-events:none}
+.tile figcaption{position:absolute;inset-inline:0;bottom:0;padding:44px 20px 20px;background:linear-gradient(transparent,rgba(5,8,14,.72));color:#F4F0E6;font-size:.85rem;z-index:1;pointer-events:none}
+.tile figcaption b{display:block;font-family:var(--f-display);font-size:1.2rem;font-weight:700;line-height:1.3}
+.gallery .empty-state{column-span:all}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(4,8,16,.94);display:flex;align-items:center;justify-content:center;gap:12px;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
+.lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0;max-width:100%}
+.lb img{display:block;max-width:min(92vw,1100px);max-height:78vh;object-fit:contain;border-radius:4px}
+.lb figcaption{color:#EDE8DC;font-family:var(--f-display);font-size:1.25rem;text-align:center}
+.lb-x,.lb-nav{border:1px solid rgba(237,232,220,.3);background:rgba(10,16,28,.7);color:#EDE8DC;border-radius:999px;width:46px;height:46px;font-size:1.5rem;cursor:pointer;flex:none;display:grid;place-items:center;line-height:1}
+.lb-x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);inset-inline-start:14px}
+.lb-x:hover,.lb-nav:hover{border-color:var(--gold)}
+.sr{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip-path:inset(50%)}
+.g-up{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.g-ctrls{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.g-ctrls .f{min-width:170px}
+.g-file{position:relative;cursor:pointer}
+.g-file:focus-within{outline:3px solid var(--focus);outline-offset:2px}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.g-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.g-th{aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:var(--surface-2)}
+.g-th img{width:100%;height:100%;object-fit:cover;display:block}
+.g-card .in{min-height:40px;padding-block:6px}
+
+/* الحجز */
+.book-wrap{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:48px;align-items:start;max-width:1040px;margin-inline:auto}
+.formcard{display:flex;flex-direction:column;gap:16px;min-width:0}
+fieldset{border:1px solid var(--line);border-radius:14px;margin:0;padding:20px 20px 22px;background:var(--surface);min-width:0}
+legend{padding-inline:10px;font-family:var(--f-display);font-size:1.3rem;display:flex;align-items:center;gap:10px}
+legend span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-family:var(--f-body);font-size:.85rem;font-weight:600}
+.types{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.type{position:relative;display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 14px;cursor:pointer;background:var(--bg);min-width:0;transition:border-color .2s,background .2s}
+.type:hover{border-color:var(--accent-line)}
+.type input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.type:has(input:checked){border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
+.type:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
+.type img{width:54px;height:66px;border-radius:999px 999px 8px 8px;object-fit:cover;object-position:50% 25%;flex:none}
+.type .tx{min-width:0;display:block}
+.type b{display:block}
+.type small{color:var(--muted);display:block;line-height:1.5}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+label.f{display:flex;flex-direction:column;gap:6px;font-size:.92rem;min-width:0}
+label.f>span{color:var(--muted)}
+.in{width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);min-height:46px}
+.in:focus{border-color:var(--accent);outline:0;box-shadow:0 0 0 3px var(--accent-soft)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:8px;margin-top:12px}
+.slot{padding:9px 6px;border-radius:10px;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:.9rem;line-height:1.3}
+.slot:hover:not(:disabled){border-color:var(--accent)}
+.slot[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.slot:disabled{cursor:not-allowed;opacity:.9;color:var(--muted);background:repeating-linear-gradient(135deg,transparent 0 6px,color-mix(in srgb,var(--st-x) 14%,transparent) 6px 12px)}
+.slot small{display:block;font-size:.72rem}
+.slot.taken{color:var(--st-x)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.82rem;color:var(--muted);margin-top:12px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-inline-end:6px;vertical-align:-1px;border:1px solid var(--line)}
+.busy{margin-top:10px;font-size:.88rem}
+.recap{color:var(--muted);font-size:.92rem;text-align:center;min-height:1.5em}
+.err{color:var(--st-x);font-size:.92rem;text-align:center;min-height:1.4em}
+.book-aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center}
+.book-aside .arch-photo{width:100%;max-width:300px;aspect-ratio:3/4.2;border-radius:999px 999px 16px 16px;overflow:hidden;outline:1px solid var(--accent-line);outline-offset:10px}
+.book-aside img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.book-aside h3{font-size:1.5rem}
+.book-aside p{color:var(--muted);font-size:.92rem;max-width:30ch}
+.done{max-width:720px;margin-inline:auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow)}
+.done h3{font-size:1.8rem;margin-bottom:6px}
+.done dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:16px 0}
+.done dt{color:var(--muted)}
+.done dd{margin:0;font-weight:500}
+.warn{background:color-mix(in srgb,var(--st-p) 14%,transparent);color:var(--st-p);padding:10px 14px;border-radius:10px;margin-bottom:12px;font-size:.92rem}
+
+/* الموقع */
+.loc{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;min-width:0}
+.mapcard{background:linear-gradient(135deg,var(--hero-1),var(--hero-2));color:var(--hero-ink);border-color:rgba(217,183,114,.25);display:flex;flex-direction:column;justify-content:space-between;gap:20px;position:relative;overflow:hidden}
+.mapcard svg{position:absolute;inset:0;width:100%;height:100%;opacity:.4}
+.mapcard>*{position:relative}
+.mapcard .btn.pri{background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#10151F}
+.phones{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.phone{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.phone b{direction:ltr;letter-spacing:.06em}
+footer.f{padding:34px 0 44px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+
+/* لوحة التحكم */
+.ad-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.ad-head h2{font-size:2.1rem;margin-bottom:10px}
+.mode{font-size:.82rem;padding:4px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.mode.on{color:var(--st-c);border-color:currentColor}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:18px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.stat small{color:var(--muted);display:block}
+.stat b{font-size:1.5rem;font-variant-numeric:tabular-nums;display:block;line-height:1.3}
+.panel-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;margin-bottom:18px}
+.cal-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.cal-top h3{font-size:1.4rem}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal .dn{text-align:center;color:var(--muted);font-size:.78rem;padding:4px 0}
+.day{min-height:62px;border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:4px 6px;text-align:start;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.day:hover{border-color:var(--accent)}
+.day.today{box-shadow:inset 0 0 0 2px var(--accent)}
+.day[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.day.empty{visibility:hidden}
+.day .dots{display:flex;gap:3px;flex-wrap:wrap}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+.day small{color:var(--muted);font-size:.7rem}
+.legend2{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:10px}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:500;color:var(--c);background:color-mix(in srgb,var(--c) 15%,transparent);white-space:nowrap}
+.s-pending{--c:var(--st-p);color:var(--st-p)}.s-confirmed{--c:var(--st-c);color:var(--st-c)}.s-done{--c:var(--st-d);color:var(--st-d)}.s-cancelled{--c:var(--st-x);color:var(--st-x)}
+.dlist{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.ditem{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start;min-width:0}
+.ditem>div{min-width:0}
+.bars{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.bar{display:grid;grid-template-columns:120px 1fr 28px;gap:10px;align-items:center;font-size:.9rem}
+.bar i{display:block;height:10px;border-radius:5px;background:var(--accent)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.92rem}
+th,td{padding:10px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:middle}
+th{color:var(--muted);font-weight:500;font-size:.82rem;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+select.st{min-height:36px;padding:2px 8px;border-radius:999px;border:1px solid currentColor;background:transparent;font-weight:500;width:auto;cursor:pointer}
+select.st option{color:var(--ink);background:var(--surface)}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.empty-state{padding:34px 18px;text-align:center;color:var(--muted)}
+.toast{position:fixed;inset-inline:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);margin-inline:auto;width:fit-content;max-width:calc(100% - 32px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;z-index:80;box-shadow:var(--shadow)}
+
+@media (max-width:960px){
+  .book-wrap{grid-template-columns:1fr}
+  .book-aside{display:none}
+}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:48px;padding-block:44px 76px}
+  .arches{max-width:360px}
+  .gallery{column-count:2}
+  .loc,.panel-grid{grid-template-columns:1fr}
+  .bar{grid-template-columns:96px 1fr 24px}
+  .ad{border-inline-start:0;border-top:1px solid var(--line);padding-inline:0}
+  .ad:first-child{border-top:0}
+  .sec{padding-block:60px}
+}
+@media (max-width:520px){
+  .hero-facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start}
+  .hero-facts>div{padding-inline:12px}
+  .hero-facts b{font-size:.98rem}
+}
+@media (max-width:700px){
+  .gallery{column-gap:10px}
+  .tile{margin-bottom:10px}
+  .lb{gap:6px;padding-inline:8px}
+  .lb-nav{width:38px;height:38px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+
+<div id="app" dir="rtl" lang="ar">
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#top" id="brand" aria-label="استوديو النهرين">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 35V19a13 13 0 0 1 26 0v16z" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="23" r="5.2" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="20" cy="23" r="1.6" fill="var(--accent)"/></svg>
+        <b>استوديو النهرين</b>
+      </a>
+      <nav class="nav" aria-label="التنقل">
+        <a href="#gallery" data-site>المعرض</a>
+        <a href="#book" data-site>احجز الآن</a>
+        <a href="#contact" data-site>الموقع والتواصل</a>
+        <button type="button" id="goAdmin" class="adm" hidden>لوحة التحكم</button>
+        <button type="button" id="goSite" class="adm" hidden>العودة للموقع</button>
+      </nav>
+    </div>
+  </header>
+
+  <div id="site">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div>
+          <div class="eyebrow">الناصرية · الصالحية</div>
+          <h1><span class="pre">استوديو</span><em>النهرين</em></h1>
+          <div class="rule">للتصوير · الأعراس والمناسبات</div>
+          <p class="lead">تصوير أعراس وجلسات عائلية وأعياد ميلاد وتخرّج بروح احترافية. احجز موعدك في دقيقة واختر وقتاً غير محجوز.</p>
+          <div class="cta">
+            <a class="btn pri" href="#book">احجز موعدك</a>
+            <a class="btn ghost" href="#gallery">شاهد أعمالنا</a>
+          </div>
+          <div class="hero-facts">
+            <div><b>10 ص – 10 م</b>مواعيد الاستوديو</div>
+            <div><b>دقيقة واحدة</b>لإتمام الحجز</div>
+            <div><b>واتساب</b>تأكيد مباشر</div>
+          </div>
+        </div>
+        <div class="arches" aria-hidden="true">
+          <div class="arch main"><img src="img/wedding-hall.jpg" alt=""></div>
+          <div class="arch sm"><img src="img/family.jpg" alt=""></div>
+          <span class="arch-tag">جلسات الأعراس والعائلة</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="ribbon"><div class="wrap"><div class="ads" id="ads"></div></div></div>
+
+    <section class="sec" id="gallery">
+      <div class="wrap">
+        <div class="sec-head">
+          <div><span class="kicker">أعمالنا</span><h2>معرض الأعمال</h2><p>لقطات من جلساتنا. اختر نوع المناسبة لتصفية الصور.</p></div>
+          <div class="chips" id="galChips" role="group" aria-label="تصفية المعرض"></div>
+        </div>
+        <div class="gallery" id="galGrid"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="book" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head" style="justify-content:center;text-align:center">
+          <div><span class="kicker" style="justify-content:center">الحجز</span><h2>احجز موعدك</h2><p style="margin-inline:auto">املأ البيانات واضغط تأكيد الحجز. تصلنا التفاصيل مباشرة على واتساب.</p></div>
+        </div>
+        <div class="book-wrap" id="bookWrap">
+          <form id="bf" class="formcard" novalidate autocomplete="off">
+            <fieldset>
+              <legend><span>1</span> بياناتك</legend>
+              <div class="row">
+                <label class="f" for="name"><span>الاسم الكامل</span><input class="in" id="name" placeholder="مثال: علي حسين"></label>
+                <label class="f" for="phone"><span>رقم الهاتف</span><input class="in" id="phone" inputmode="tel" placeholder="07XXXXXXXXX" dir="ltr" style="text-align:right"></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend><span>2</span> نوع الجلسة</legend>
+              <div class="types" id="types"></div>
+            </fieldset>
+            <fieldset>
+              <legend><span>3</span> الموعد</legend>
+              <label class="f" for="date"><span>تاريخ المناسبة</span><input class="in" type="date" id="date"></label>
+              <div id="slotMsg" class="busy" hidden></div>
+              <div class="slots" id="slots" role="group" aria-label="الأوقات المتاحة"></div>
+              <div class="legend"><span><i style="background:var(--bg)"></i>متاح</span><span><i style="background:var(--accent)"></i>اختيارك</span><span><i style="background:repeating-linear-gradient(135deg,transparent 0 3px,color-mix(in srgb,var(--st-x) 30%,transparent) 3px 6px)"></i>محجوز أو غير متاح</span></div>
+            </fieldset>
+            <div class="recap" id="recap" aria-live="polite"></div>
+            <button type="button" class="btn pri lg" id="confirm">تأكيد الحجز</button>
+            <div class="err" id="err" role="alert"></div>
+          </form>
+          <aside class="book-aside" aria-hidden="true">
+            <div class="arch-photo"><img src="img/wedding-veil.jpg" alt=""></div>
+            <div><h3>لحظتكم تستحق الأجمل</h3><p style="margin-inline:auto;margin-top:6px">نثبّت موعدك بعد وصول رسالتك على واتساب، ونرتّب معك كل التفاصيل.</p></div>
+          </aside>
+        </div>
+        <div id="done" class="done" hidden></div>
+      </div>
+    </section>
+
+    <section class="sec" id="contact" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head"><div><span class="kicker">زيارتنا</span><h2>الموقع والتواصل</h2><p>نستقبلكم في الناصرية. تواصلوا معنا عبر واتساب أو زوروا الاستوديو.</p></div></div>
+        <div class="loc">
+          <div class="card mapcard">
+            <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#A3ADC0" stroke-opacity=".5" stroke-width="1"><path d="M0 60h400M0 120h400M0 180h400M0 240h400M60 0v260M140 0v260M220 0v260M300 0v260"/></g><path d="M-10 200C80 150 120 230 210 170S330 90 420 120" fill="none" stroke="#D9B772" stroke-width="4" opacity=".85"/></svg>
+            <div>
+              <small style="color:var(--hero-muted);letter-spacing:.08em">العنوان</small>
+              <h3 style="font-size:1.7rem;margin-top:4px">الناصرية - الصالحية</h3>
+              <p style="margin-top:6px">شارع التقاعد - مجاور مدرسة فاطمة الزهراء</p>
+            </div>
+            <a class="btn pri" id="mapBtn" href="https://maps.app.goo.gl/kpR88f58KXef9XPLA" target="_blank" rel="noopener noreferrer">افتح الموقع على خرائط Google</a>
+          </div>
+          <div class="card">
+            <h3 style="font-size:1.5rem">أرقام التواصل</h3>
+            <div class="phones" id="phones"></div>
+            <p style="color:var(--muted);font-size:.88rem;margin-top:14px">ساعات العمل من 10 صباحاً حتى 10 مساءً، ويُنصح بالحجز المسبق للمناسبات.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="f"><div class="wrap">© استوديو النهرين · الناصرية، العراق</div></footer>
+  </div>
+
+  <div id="admin" hidden>
+    <div class="wrap" style="padding-block:28px 60px" id="adminBody"></div>
+  </div>
+
+  <div id="lb" class="lb" hidden role="dialog" aria-modal="true" aria-label="عرض الصورة">
+    <button type="button" class="lb-x" id="lbX" data-lbx aria-label="إغلاق">✕</button>
+    <button type="button" class="lb-nav" data-lbp aria-label="الصورة السابقة">›</button>
+    <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+    <button type="button" class="lb-nav" data-lbn aria-label="الصورة التالية">‹</button>
+  </div>
+  <div id="toast" class="toast" hidden role="status"></div>
+</div>
+
+<script>
+(function(){
+'use strict';
+if(!window.claude||!window.claude.use){window.claude={use:function(){return Promise.resolve(null)}}}
+
+/* الإعدادات: مدة كل جلسة تُستخدم فقط لمنع تضارب المواعيد */
+var CFG={
+  phones:[{n:'07823117426',label:'الرقم الرئيسي'},{n:'07807844665',label:'الرقم الثاني'}],
+  address:'الناصرية - الصالحية - شارع التقاعد - مجاور مدرسة فاطمة الزهراء',
+  open:10, close:22,
+  types:[
+    {id:'wedding',img:'img/wedding-hall.jpg',name:'جلسة تصوير أعراس',dur:3,desc:'تغطية جلسة العروسين والمناسبة.'},
+    {id:'family',img:'img/family.jpg',name:'جلسة تصوير عائلية',dur:2,desc:'صور عائلية بإضاءة استوديو.'},
+    {id:'birthday',img:'img/birthday.jpg',name:'جلسة تصوير عيد ميلاد',dur:2,desc:'جلسة مرحة مع ديكور مناسب للأطفال.'},
+    {id:'graduation',img:'img/graduation.jpg',name:'جلسة تصوير تخرج',dur:1,desc:'صور التخرج مع الأهل والأصدقاء.'}
+  ],
+  ads:[
+    {k:'حجز سريع',t:'اختر الموعد من الأوقات المتاحة واحجز خلال دقيقة.'},
+    {k:'موسم التخرج',t:'احجز مبكراً لجلسات التخرج واختر الوقت الذي يناسب دفعتك.'},
+    {k:'مناسبات خارجية',t:'تواصل معنا عبر واتساب لتنسيق التصوير خارج الاستوديو.'}
+  ],
+  status:{pending:'قيد الانتظار',confirmed:'مؤكد',done:'مكتمل',cancelled:'ملغى'},
+  gallery:[
+    {id:'g01',src:'img/wedding-hall.jpg',title:'عروسان في القاعة',cat:'wedding',w:640,h:800,order:10},
+    {id:'g02',src:'img/grad-arch.jpg',title:'تخرج تحت القوس',cat:'graduation',w:720,h:942,order:20},
+    {id:'g03',src:'img/family.jpg',title:'جلسة عائلية',cat:'family',w:640,h:853,order:30},
+    {id:'g04',src:'img/wedding-veil.jpg',title:'تحت الطرحة',cat:'wedding',w:640,h:1121,order:40},
+    {id:'g05',src:'img/grad-roses.jpg',title:'تخرج مع الورد',cat:'graduation',w:889,h:1100,order:50},
+    {id:'g06',src:'img/birthday.jpg',title:'عيد ميلاد عامين',cat:'birthday',w:640,h:1138,order:60},
+    {id:'g07',src:'img/grad-news-f.jpg',title:'تخرج وخبر عاجل',cat:'graduation',w:733,h:1100,order:70},
+    {id:'g08',src:'img/grad-books.jpg',title:'تخرج بين الكتب',cat:'graduation',w:879,h:1100,order:80},
+    {id:'g09',src:'img/grad-phone.jpg',title:'تخرج وصورة الطفولة',cat:'graduation',w:826,h:1100,order:90},
+    {id:'g10',src:'img/graduation.jpg',title:'تخرج دفعة 2026',cat:'graduation',w:640,h:1029,order:100},
+    {id:'g11',src:'img/grad-news-m.jpg',title:'تخرج والجريدة',cat:'graduation',w:735,h:1100,order:110}
+  ]
+};
+var MONTHS=['كانون الثاني','شباط','آذار','نيسان','أيار','حزيران','تموز','آب','أيلول','تشرين الأول','تشرين الثاني','كانون الأول'];
+var DAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+var CAL_HEAD=['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function pad(n){return n<10?'0'+n:''+n}
+function ymd(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function parseYmd(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2])}
+function fmtDate(s){var d=parseYmd(s);return DAYS[d.getDay()]+' '+d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear()}
+function fmtHour(h){return (h%12||12)+':00 '+(h>=12?'م':'ص')}
+function range(b){return fmtHour(b.start)+' – '+fmtHour(b.start+b.dur)}
+function typeOf(id){return CFG.types.filter(function(t){return t.id===id})[0]||CFG.types[0]}
+function toLatin(s){return String(s||'').replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)})}
+function intl(n){return '964'+String(n).replace(/\D/g,'').replace(/^0/,'')}
+function wa(num,text){return 'https://wa.me/'+intl(num)+'?text='+encodeURIComponent(text)}
+function overlap(a0,a1,b0,b1){return a0<b1&&b0<a1}
+function hrs(n){return n===1?'ساعة واحدة':n+' ساعات'}
+function toast(msg){var t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(function(){t.hidden=true},3200)}
+function copy(text,msg){
+  var ok=function(){toast(msg||'تم النسخ')},fail=function(){toast('تعذّر النسخ تلقائياً، انسخ الرقم يدوياً')};
+  try{navigator.clipboard.writeText(text).then(ok,fail)}catch(e){fail()}
+}
+
+var S={
+  bookings:[],mode:'local',adminOk:false,view:'site',
+  type:'wedding',date:'',start:null,galFilter:'all',filter:'all',selDay:'',armed:null,adminTab:'bookings',upCat:'graduation',armedG:'',lb:-1,list:[],lbReturn:null,
+  calY:new Date().getFullYear(),calM:new Date().getMonth()
+};
+S.gallery=CFG.gallery.slice();
+
+/* طبقة التخزين: db مشتركة، أو محلي عند غيابها. يسهل استبدالها بـ Supabase/Firebase. */
+var Store={
+  col:null,
+  loadLocal:function(){try{S.bookings=JSON.parse(localStorage.getItem('nahrain.bookings')||'[]')}catch(e){S.bookings=[]}},
+  saveLocal:function(){try{localStorage.setItem('nahrain.bookings',JSON.stringify(S.bookings))}catch(e){}},
+  init:function(){
+    Store.loadLocal();
+    return window.claude.use('db').then(function(db){
+      if(!db){Gal.loadLocal();renderGallery();return}
+      Store.col=db.collection('bookings');S.mode='shared';
+      Gal.col=db.collection('gallery');
+      Store.col.onSnapshot(function(snap){
+        S.bookings=snap.docs.map(function(d){var o=d.data();o.id=d.id;return o});
+        renderAll();
+      },function(){S.mode='local';Store.col=null;Store.loadLocal();renderAll()});
+      Gal.col.orderBy('order').onSnapshot(function(snap){
+        if(snap.metadata.fromCache&&snap.empty){return}
+        S.gallery=snap.docs.map(function(d){var o=d.data();o.id=d.id;return o});
+        Gal.refresh();
+      },function(){Gal.col=null});
+    }).catch(function(){});
+  },
+  save:function(b){
+    if(Store.col){return Store.col.doc(b.id).set(b)}
+    S.bookings.push(b);Store.saveLocal();renderAll();return Promise.resolve();
+  },
+  patch:function(id,p){
+    if(Store.col){return Store.col.doc(id).update(p)}
+    S.bookings=S.bookings.map(function(b){return b.id===id?Object.assign({},b,p):b});Store.saveLocal();renderAll();return Promise.resolve();
+  },
+  remove:function(id){
+    if(Store.col){return Store.col.doc(id).delete()}
+    S.bookings=S.bookings.filter(function(b){return b.id!==id});Store.saveLocal();renderAll();return Promise.resolve();
+  }
+};
+
+var Gal={
+  col:null,
+  sorted:function(){return S.gallery.slice().sort(function(a,b){return (a.order||0)-(b.order||0)})},
+  loadLocal:function(){try{var a=JSON.parse(localStorage.getItem('nahrain.gallery')||'null');if(a&&a.length){S.gallery=a}}catch(e){}},
+  saveLocal:function(){try{localStorage.setItem('nahrain.gallery',JSON.stringify(S.gallery))}catch(e){toast('تعذّر حفظ الصور في هذا المتصفح، المساحة ممتلئة.')}},
+  refresh:function(){renderGallery();if(S.view==='admin'&&S.adminTab==='gallery'&&!editingTitle()){renderAdmin()}},
+  add:function(d){
+    d.id='g'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+    if(Gal.col){return Gal.col.doc(d.id).set(d)}
+    S.gallery.push(d);Gal.saveLocal();Gal.refresh();return Promise.resolve();
+  },
+  patch:function(id,p){
+    if(Gal.col){return Gal.col.doc(id).update(p)}
+    S.gallery=S.gallery.map(function(g){return g.id===id?Object.assign({},g,p):g});Gal.saveLocal();Gal.refresh();return Promise.resolve();
+  },
+  remove:function(id){
+    if(Gal.col){return Gal.col.doc(id).delete()}
+    S.gallery=S.gallery.filter(function(g){return g.id!==id});Gal.saveLocal();Gal.refresh();return Promise.resolve();
+  }
+};
+function editingTitle(){var a=document.activeElement;return !!(a&&a.dataset&&a.dataset.gt!=null)}
+function renderGallery(){
+  var list=Gal.sorted().filter(function(g){return S.galFilter==='all'||g.cat===S.galFilter});
+  S.list=list;
+  $('#galGrid').innerHTML=list.length?list.map(function(g,i){
+    return '<figure class="tile"><button type="button" class="tile-btn" data-lb="'+i+'" aria-label="عرض الصورة: '+esc(g.title)+'"><img src="'+esc(g.src)+'" alt="'+esc(g.title)+'" width="'+(g.w||4)+'" height="'+(g.h||5)+'" loading="lazy"></button><figcaption><b>'+esc(g.title)+'</b>'+esc(typeOf(g.cat).name)+'</figcaption></figure>';
+  }).join(''):'<p class="empty-state">لا توجد صور في هذا القسم بعد.</p>';
+  if(S.lb>=0){if(S.list[S.lb]){showLb()}else{closeLb()}}
+}
+function openLb(i){S.lb=i;S.lbReturn=document.activeElement;showLb()}
+function showLb(){
+  var g=S.list[S.lb];if(!g){closeLb();return}
+  $('#lbImg').src=g.src;$('#lbImg').alt=g.title;
+  $('#lbCap').textContent=g.title+' · '+typeOf(g.cat).name;
+  var el=$('#lb');if(el.hidden){el.hidden=false;$('#lbX').focus()}
+  document.body.style.overflow='hidden';
+}
+function closeLb(){
+  $('#lb').hidden=true;S.lb=-1;document.body.style.overflow='';
+  var r=S.lbReturn;S.lbReturn=null;if(r&&r.focus){try{r.focus()}catch(e){}}
+}
+function stepLb(d){var n=S.list.length;if(!n){return}S.lb=(S.lb+d+n)%n;showLb()}
+
+function fileToDoc(file){
+  return new Promise(function(res,rej){
+    var url=URL.createObjectURL(file),im=new Image();
+    im.onload=function(){
+      URL.revokeObjectURL(url);
+      var w=im.naturalWidth,h=im.naturalHeight,sc=Math.min(1,1000/Math.max(w,h));
+      var tw=Math.round(w*sc),th=Math.round(h*sc),q=.82,out='';
+      for(var i=0;i<10;i++){
+        var c=document.createElement('canvas');c.width=tw;c.height=th;
+        c.getContext('2d').drawImage(im,0,0,tw,th);
+        out=c.toDataURL('image/jpeg',q);
+        if(out.length<235000){break}
+        if(q>.55){q-=.08}else{tw=Math.round(tw*.85);th=Math.round(th*.85)}
+      }
+      if(out.length>=250000){rej(new Error('big'));return}
+      res({src:out,w:tw,h:th});
+    };
+    im.onerror=function(){URL.revokeObjectURL(url);rej(new Error('bad'))};
+    im.src=url;
+  });
+}
+function addFiles(inp){
+  var files=Array.prototype.slice.call(inp.files||[]);inp.value='';
+  if(!files.length){return}
+  toast('جارٍ معالجة '+files.length+' صورة…');
+  var done=0,fail=0;
+  files.reduce(function(p,f){
+    return p.then(function(){return fileToDoc(f)}).then(function(d){
+      var min=Gal.sorted().reduce(function(m,g){return Math.min(m,g.order||0)},0);
+      return Gal.add({src:d.src,w:d.w,h:d.h,title:typeOf(S.upCat).name,cat:S.upCat,order:min-10,createdAt:new Date().toISOString()});
+    }).then(function(){done++},function(){fail++});
+  },Promise.resolve()).then(function(){
+    toast(done?('تمت إضافة '+done+' صورة'+(fail?' وتعذّر '+fail:'')):'تعذّر إضافة الصور. جرّب صيغة JPG أو PNG.');
+  });
+}
+function moveG(id,dir){
+  var l=Gal.sorted(),i=l.findIndex(function(g){return g.id===id}),j=i+dir;
+  if(i<0||j<0||j>=l.length){return}
+  var a=l[i],b=l[j],oa=a.order||0,ob=b.order||0;
+  if(oa===ob){ob=oa+dir}
+  Gal.patch(a.id,{order:ob}).then(function(){return Gal.patch(b.id,{order:oa})}).catch(function(){toast('تعذّر تغيير الترتيب')});
+}
+function delG(id){
+  if(S.armedG===id){S.armedG='';Gal.remove(id).then(function(){toast('تم حذف الصورة من المعرض')},function(){toast('تعذّر الحذف')});return}
+  S.armedG=id;renderAdmin();
+  setTimeout(function(){if(S.armedG===id){S.armedG='';if(S.view==='admin'&&S.adminTab==='gallery'){renderAdmin()}}},4000);
+}
+function catOptions(sel){return CFG.types.map(function(t){return '<option value="'+t.id+'"'+(t.id===sel?' selected':'')+'>'+esc(t.name.replace('جلسة تصوير ',''))+'</option>'}).join('')}
+function galleryAdminHtml(){
+  var list=Gal.sorted();
+  return '<div class="card" style="margin-bottom:16px"><div class="g-up"><div><h3 style="font-size:1.4rem">إضافة صور إلى المعرض</h3><p style="color:var(--muted);font-size:.9rem;margin-top:4px">تُضغط الصور تلقائياً وتظهر في الموقع فوراً. الصورة الجديدة تُوضع في بداية المعرض.</p></div>'+
+   '<div class="g-ctrls"><label class="f" for="upCat"><span>قسم الصور</span><select class="in" id="upCat">'+catOptions(S.upCat)+'</select></label>'+
+   '<label class="btn pri g-file">اختيار صور من الجهاز<input type="file" id="upFiles" accept="image/*" multiple class="sr"></label></div></div></div>'+
+   '<h3 style="font-size:1.4rem;margin-bottom:10px">صور المعرض ('+list.length+')</h3>'+
+   (list.length?'<div class="g-grid">'+list.map(function(g,i){
+     return '<div class="g-card"><div class="g-th"><img src="'+esc(g.src)+'" alt="'+esc(g.title)+'" loading="lazy"></div>'+
+      '<label class="f"><span>العنوان</span><input class="in" data-gt="'+g.id+'" value="'+esc(g.title)+'" maxlength="60"></label>'+
+      '<label class="f"><span>القسم</span><select class="in" data-gc="'+g.id+'">'+catOptions(g.cat)+'</select></label>'+
+      '<div class="acts"><button type="button" class="btn ghost sm" data-gmv="'+g.id+'" data-dir="-1"'+(i===0?' disabled':'')+'>تقديم</button><button type="button" class="btn ghost sm" data-gmv="'+g.id+'" data-dir="1"'+(i===list.length-1?' disabled':'')+'>تأخير</button><button type="button" class="btn ghost sm" data-gdel="'+g.id+'">'+(S.armedG===g.id?'تأكيد الحذف':'حذف')+'</button></div></div>';
+   }).join('')+'</div>':'<div class="empty-state card"><b>المعرض فارغ</b><p>اختر صوراً من الجهاز لتظهر هنا وفي الموقع.</p></div>');
+}
+
+function busyOn(date,excludeId){return S.bookings.filter(function(b){return b.date===date&&b.status!=='cancelled'&&b.id!==excludeId})}
+function isFree(date,start,dur,excludeId){return !busyOn(date,excludeId).some(function(b){return overlap(start,start+dur,b.start,b.start+b.dur)})}
+
+/* ===== موقع الزبائن ===== */
+function renderStatic(){
+  $('#ads').innerHTML=CFG.ads.map(function(a){return '<div class="ad"><small>'+esc(a.k)+'</small><p>'+esc(a.t)+'</p></div>'}).join('');
+  var cats=[['all','الكل']].concat(CFG.types.map(function(t){return [t.id,t.name.replace('جلسة تصوير ','')]}));
+  $('#galChips').innerHTML=cats.map(function(c){return '<button type="button" class="chip" data-gal="'+c[0]+'" aria-pressed="'+(S.galFilter===c[0])+'">'+esc(c[1])+'</button>'}).join('');
+  renderGallery();
+  if(!$('#types').children.length){
+    $('#types').innerHTML=CFG.types.map(function(t){
+      return '<label class="type"><input type="radio" name="type" value="'+t.id+'"'+(S.type===t.id?' checked':'')+'><img src="'+t.img+'" alt=""><span class="tx"><b>'+esc(t.name)+'</b><small>'+esc(t.desc)+' · '+hrs(t.dur)+'</small></span></label>';
+    }).join('');
+    $('#phones').innerHTML=CFG.phones.map(function(p){
+      return '<div class="phone"><div><small style="color:var(--muted)">'+esc(p.label)+'</small><div><b class="num">'+p.n+'</b></div></div><div class="acts"><a class="btn wa sm" href="'+wa(p.n,'مرحباً استوديو النهرين، أريد الاستفسار عن حجز.')+'" target="_blank" rel="noopener noreferrer">واتساب</a><button type="button" class="btn ghost sm" data-copy="'+p.n+'">نسخ</button></div></div>';
+    }).join('');
+    $('#date').min=ymd(new Date());
+  }
+}
+
+function renderSlots(){
+  var box=$('#slots'),msg=$('#slotMsg'),t=typeOf(S.type);
+  if(!S.date){box.innerHTML='';msg.hidden=false;msg.style.color='var(--muted)';msg.textContent='اختر تاريخ المناسبة لتظهر الأوقات المتاحة. مدة '+t.name+': '+hrs(t.dur)+'.';return}
+  var now=new Date(),isToday=S.date===ymd(now),busy=busyOn(S.date),html='';
+  if(S.start!=null&&!isFree(S.date,S.start,t.dur)){S.start=null}
+  for(var h=CFG.open;h<=CFG.close-t.dur;h++){
+    var taken=!isFree(S.date,h,t.dur),past=isToday&&h<=now.getHours();
+    html+='<button type="button" class="slot'+(taken?' taken':'')+'" data-h="'+h+'" aria-pressed="'+(S.start===h)+'"'+((taken||past)?' disabled':'')+'>'+fmtHour(h)+'<small>'+(taken?'محجوز':past?'انتهى':'متاح')+'</small></button>';
+  }
+  box.innerHTML=html||'<p class="note">لا توجد أوقات تتسع لهذه الجلسة في هذا اليوم.</p>';
+  msg.hidden=false;
+  if(busy.length){msg.style.color='var(--st-x)';msg.textContent='محجوز في هذا اليوم: '+busy.slice().sort(function(a,b){return a.start-b.start}).map(range).join('، ')}
+  else{msg.style.color='var(--st-c)';msg.textContent='اليوم كله متاح. مدة '+t.name+': '+hrs(t.dur)+'.'}
+}
+function renderRecap(){
+  var t=typeOf(S.type);
+  $('#recap').textContent=t.name+(S.date&&S.start!=null?' · '+fmtDate(S.date)+' · '+fmtHour(S.start)+' – '+fmtHour(S.start+t.dur):'');
+}
+
+function bookingText(b){
+  return ['*طلب حجز جديد - استوديو النهرين*','رقم الطلب: '+b.no,'الاسم: '+b.name,'الهاتف: '+b.phone,'نوع الجلسة: '+typeOf(b.type).name,'التاريخ: '+fmtDate(b.date),'الوقت: '+range(b)].join('\n');
+}
+
+function submit(){
+  var err=$('#err');function fail(m){err.textContent=m;toast(m)}
+  err.textContent='';
+  var name=$('#name').value.trim(),phone=toLatin($('#phone').value).replace(/[\s-]/g,''),t=typeOf(S.type);
+  if(name.length<3){return fail('اكتب اسمك الكامل.')}
+  if(!/^07\d{9}$/.test(phone)){return fail('رقم الهاتف يجب أن يكون 11 رقماً ويبدأ بـ 07.')}
+  if(!S.date){return fail('اختر تاريخ المناسبة.')}
+  if(S.start==null){return fail('اختر وقتاً متاحاً للجلسة.')}
+  if(!isFree(S.date,S.start,t.dur)){renderSlots();renderRecap();return fail('هذا الوقت حُجز للتو. اختر وقتاً آخر.')}
+  var id='b'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  var b={id:id,no:'NR-'+String(Date.now()).slice(-6),name:name,phone:phone,type:S.type,date:S.date,start:S.start,dur:t.dur,status:'pending',createdAt:new Date().toISOString()};
+  var btn=$('#confirm');btn.disabled=true;btn.textContent='جارٍ الحفظ…';
+  Store.save(b).then(function(){showDone(b,true)},function(){showDone(b,false)});
+}
+
+function showDone(b,saved){
+  $('#bookWrap').hidden=true;
+  var d=$('#done');d.hidden=false;
+  var text=bookingText(b);
+  d.innerHTML=(saved?'':'<div class="warn">تعذّر حفظ الطلب في قاعدة البيانات. أرسل التفاصيل عبر واتساب ليصلنا الحجز.</div>')+
+   '<h3>'+(saved?'تم حفظ حجزك':'حجزك جاهز للإرسال')+'</h3><p style="color:var(--muted)">اضغط الزر لإرسال التفاصيل إلى واتساب الاستوديو. نؤكد لك الموعد بعد وصول الرسالة.</p>'+
+   '<dl><dt>رقم الطلب</dt><dd class="num">'+esc(b.no)+'</dd><dt>الاسم</dt><dd>'+esc(b.name)+'</dd><dt>الجلسة</dt><dd>'+esc(typeOf(b.type).name)+'</dd><dt>الموعد</dt><dd>'+esc(fmtDate(b.date))+' · '+range(b)+'</dd></dl>'+
+   '<div class="cta"><a class="btn wa" href="'+wa(CFG.phones[0].n,text)+'" target="_blank" rel="noopener noreferrer">إرسال عبر واتساب (الرقم الرئيسي)</a>'+
+   '<a class="btn ghost" href="'+wa(CFG.phones[1].n,text)+'" target="_blank" rel="noopener noreferrer">إرسال إلى الرقم الثاني</a>'+
+   '<button type="button" class="btn ghost" id="again">حجز جديد</button></div>';
+  d.scrollIntoView({block:'start'});
+}
+
+/* ===== لوحة التحكم ===== */
+function sorted(list){return list.slice().sort(function(a,b){return (a.date+pad(a.start)).localeCompare(b.date+pad(b.start))})}
+function pill(s){return '<span class="pill s-'+s+'">'+CFG.status[s]+'</span>'}
+function custMsg(b){return 'مرحباً '+b.name+'، بخصوص حجزك في استوديو النهرين: '+typeOf(b.type).name+' يوم '+fmtDate(b.date)+' الساعة '+range(b)+'.\nالعنوان: '+CFG.address}
+
+function renderAdmin(){
+  var live=S.bookings.filter(function(b){return b.status!=='cancelled'});
+  var mk=S.calY+'-'+pad(S.calM+1),todayStr=ymd(new Date());
+  var inMonth=live.filter(function(b){return b.date.indexOf(mk)===0}).length;
+  var pending=S.bookings.filter(function(b){return b.status==='pending'}).length;
+  var upcoming=S.bookings.filter(function(b){return b.status==='confirmed'&&b.date>=todayStr}).length;
+  var counts={};live.forEach(function(b){counts[b.type]=(counts[b.type]||0)+1});
+  var ranked=CFG.types.filter(function(t){return counts[t.id]}).sort(function(a,b){return counts[b.id]-counts[a.id]});
+  var max=ranked.length?counts[ranked[0].id]:1;
+
+  var first=new Date(S.calY,S.calM,1),off=(first.getDay()+1)%7,dim=new Date(S.calY,S.calM+1,0).getDate(),cells='';
+  CAL_HEAD.forEach(function(n){cells+='<div class="dn">'+n+'</div>'});
+  for(var i=0;i<off;i++){cells+='<div class="day empty"></div>'}
+  for(var d=1;d<=dim;d++){
+    var ds=S.calY+'-'+pad(S.calM+1)+'-'+pad(d),items=sorted(S.bookings.filter(function(b){return b.date===ds&&b.status!=='cancelled'}));
+    cells+='<button type="button" class="day'+(ds===todayStr?' today':'')+'" data-day="'+ds+'" aria-pressed="'+(S.selDay===ds)+'"><span class="num">'+d+'</span><span class="dots">'+items.slice(0,6).map(function(b){return '<i class="dot s-'+b.status+'"></i>'}).join('')+'</span>'+(items.length?'<small>'+items.length+' حجز</small>':'<small>&nbsp;</small>')+'</button>';
+  }
+  var dayItems=S.selDay?sorted(S.bookings.filter(function(b){return b.date===S.selDay})):[];
+  var dayHtml=S.selDay?'<h3 style="font-size:1.3rem">'+esc(fmtDate(S.selDay))+'</h3>'+(dayItems.length?'<div class="dlist">'+dayItems.map(function(b){
+    return '<div class="ditem"><div><b>'+esc(b.name)+'</b><div style="color:var(--muted);font-size:.88rem">'+esc(typeOf(b.type).name)+' · '+range(b)+'</div></div>'+pill(b.status)+'</div>'}).join('')+'</div>':'<p style="color:var(--muted);font-size:.88rem;margin-top:12px">لا توجد حجوزات في هذا اليوم.</p>'):'<h3 style="font-size:1.3rem">تفاصيل اليوم</h3><p style="color:var(--muted);font-size:.88rem;margin-top:12px">اختر يوماً من التقويم لعرض حجوزاته ومواعيده.</p>';
+
+  var list=sorted(S.bookings).filter(function(b){return S.filter==='all'||b.status===S.filter});
+  var tabs=['all','pending','confirmed','done','cancelled'].map(function(k){
+    var n=k==='all'?S.bookings.length:S.bookings.filter(function(b){return b.status===k}).length;
+    return '<button type="button" class="chip" data-filter="'+k+'" aria-pressed="'+(S.filter===k)+'">'+(k==='all'?'الكل':CFG.status[k])+' ('+n+')</button>';
+  }).join('');
+  var rows=list.map(function(b){
+    return '<tr><td class="num">'+esc(b.no||'')+'</td><td><b>'+esc(b.name)+'</b><div class="num" style="color:var(--muted);font-size:.85rem" dir="ltr">'+esc(b.phone)+'</div></td><td>'+esc(typeOf(b.type).name)+'</td><td>'+esc(fmtDate(b.date))+'<div style="color:var(--muted);font-size:.85rem">'+range(b)+'</div></td>'+
+      '<td><select class="st s-'+b.status+'" data-st="'+b.id+'" aria-label="الحالة">'+Object.keys(CFG.status).map(function(k){return '<option value="'+k+'"'+(b.status===k?' selected':'')+'>'+CFG.status[k]+'</option>'}).join('')+'</select></td>'+
+      '<td><div class="acts"><a class="btn wa sm" href="'+wa(b.phone,custMsg(b))+'" target="_blank" rel="noopener noreferrer">واتساب للزبون</a><button type="button" class="btn ghost sm" data-del="'+b.id+'">'+(S.armed===b.id?'تأكيد الحذف':'حذف')+'</button></div></td></tr>';
+  }).join('');
+
+  $('#adminBody').innerHTML=
+   '<div class="ad-head"><div><span class="kicker">الإدارة</span><h2>لوحة تحكم الاستوديو</h2><span class="mode '+(S.mode==='shared'?'on':'')+'">'+(S.mode==='shared'?'قاعدة بيانات مشتركة':'وضع محلي: البيانات في هذا المتصفح فقط')+'</span></div></div>'+
+   '<div class="tabs" style="margin-bottom:16px">'+['bookings','gallery'].map(function(k){return '<button type="button" class="chip" data-atab="'+k+'" aria-pressed="'+(S.adminTab===k)+'">'+(k==='bookings'?'الحجوزات':'معرض الأعمال')+'</button>'}).join('')+'</div>'+(S.adminTab==='gallery'?galleryAdminHtml():
+   '<div class="stats"><div class="stat"><small>حجوزات '+MONTHS[S.calM]+'</small><b>'+inMonth+'</b></div><div class="stat"><small>بانتظار التأكيد</small><b>'+pending+'</b></div><div class="stat"><small>مؤكدة قادمة</small><b>'+upcoming+'</b></div><div class="stat"><small>الجلسة الأكثر طلباً</small><b style="font-size:1.15rem;font-family:var(--f-body)">'+(ranked.length?esc(ranked[0].name.replace('جلسة تصوير ','')):'—')+'</b></div></div>'+
+   '<div class="panel-grid"><div class="card"><div class="cal-top"><h3>'+MONTHS[S.calM]+' '+S.calY+'</h3><div class="acts"><button type="button" class="btn ghost sm" data-cal="-1">السابق</button><button type="button" class="btn ghost sm" data-cal="0">اليوم</button><button type="button" class="btn ghost sm" data-cal="1">التالي</button></div></div><div class="cal">'+cells+'</div>'+
+   '<div class="legend2"><span class="s-pending"><i class="dot" style="display:inline-block"></i> قيد الانتظار</span><span class="s-confirmed"><i class="dot" style="display:inline-block"></i> مؤكد</span><span class="s-done"><i class="dot" style="display:inline-block"></i> مكتمل</span></div></div>'+
+   '<div style="display:flex;flex-direction:column;gap:16px;min-width:0"><div class="card">'+dayHtml+'</div><div class="card"><h3 style="font-size:1.3rem">الجلسات الأكثر طلباً</h3><div class="bars">'+(ranked.length?ranked.map(function(t){return '<div class="bar"><span>'+esc(t.name.replace('جلسة تصوير ',''))+'</span><i style="width:'+Math.round(counts[t.id]/max*100)+'%"></i><b class="num">'+counts[t.id]+'</b></div>'}).join(''):'<p style="color:var(--muted);font-size:.88rem">ستظهر الإحصائية بعد أول حجز.</p>')+'</div></div></div></div>'+
+   '<h3 style="font-size:1.5rem;margin-bottom:10px">إدارة الحجوزات</h3><div class="tabs">'+tabs+'</div>'+
+   '<div class="tbl-wrap">'+(list.length?'<table><thead><tr><th>الرقم</th><th>الزبون</th><th>الجلسة</th><th>الموعد</th><th>الحالة</th><th>إجراءات</th></tr></thead><tbody>'+rows+'</tbody></table>':'<div class="empty-state"><b>لا توجد حجوزات '+(S.filter==='all'?'بعد':'بهذه الحالة')+'</b><p>ستظهر هنا فور وصول أول طلب من موقع الزبائن.</p></div>')+'</div>');
+}
+
+function setView(v){
+  S.view=v;$('#site').hidden=v!=='site';$('#admin').hidden=v!=='admin';
+  $('#goAdmin').hidden=!(S.adminOk&&v==='site');$('#goSite').hidden=!(S.adminOk&&v==='admin');
+  $$('[data-site]').forEach(function(a){a.hidden=v!=='site'});
+  if(v==='admin'){renderAdmin()}
+  window.scrollTo(0,0);
+}
+function renderAll(){
+  if(S.view==='site'){renderSlots();renderRecap()}
+  if(S.view==='admin'&&!editingTitle()){renderAdmin()}
+}
+
+document.addEventListener('click',function(e){
+  var t=e.target.closest('button,a');if(!t){return}
+  if(t.dataset.lb!=null){openLb(+t.dataset.lb)}
+  else if(t.dataset.lbx!=null){closeLb()}
+  else if(t.dataset.lbp!=null){stepLb(-1)}
+  else if(t.dataset.lbn!=null){stepLb(1)}
+  else if(t.dataset.atab){S.adminTab=t.dataset.atab;renderAdmin()}
+  else if(t.dataset.gmv){moveG(t.dataset.gmv,+t.dataset.dir)}
+  else if(t.dataset.gdel){delG(t.dataset.gdel)}
+  else if(t.id==='goAdmin'){setView('admin')}
+  else if(t.id==='goSite'||(t.id==='brand'&&S.view==='admin')){e.preventDefault();setView('site')}
+  else if(t.dataset.gal){S.galFilter=t.dataset.gal;renderStatic()}
+  else if(t.dataset.h){S.start=+t.dataset.h;renderSlots();renderRecap()}
+  else if(t.id==='confirm'){submit()}
+  else if(t.dataset.copy){copy(t.dataset.copy,'تم نسخ الرقم')}
+  else if(t.id==='again'){$('#done').hidden=true;$('#bookWrap').hidden=false;var c=$('#confirm');c.disabled=false;c.textContent='تأكيد الحجز';S.start=null;S.date='';$('#date').value='';renderSlots();renderRecap();document.getElementById('book').scrollIntoView()}
+  else if(t.dataset.day){S.selDay=t.dataset.day;renderAdmin()}
+  else if(t.dataset.cal!=null){var v=+t.dataset.cal;if(v===0){var n=new Date();S.calY=n.getFullYear();S.calM=n.getMonth()}else{S.calM+=v;if(S.calM<0){S.calM=11;S.calY--}if(S.calM>11){S.calM=0;S.calY++}}renderAdmin()}
+  else if(t.dataset.filter){S.filter=t.dataset.filter;renderAdmin()}
+  else if(t.dataset.del){
+    if(S.armed===t.dataset.del){S.armed=null;Store.remove(t.dataset.del).then(function(){toast('تم حذف الحجز')},function(){toast('تعذّر الحذف')})}
+    else{S.armed=t.dataset.del;renderAdmin();setTimeout(function(){if(S.armed){S.armed=null;if(S.view==='admin'){renderAdmin()}}},4000)}
+  }
+});
+
+document.addEventListener('change',function(e){
+  var t=e.target;
+  if(t.id==='upFiles'){addFiles(t)}
+  else if(t.id==='upCat'){S.upCat=t.value}
+  else if(t.dataset.gt){var ti=t.value.trim();if(ti){Gal.patch(t.dataset.gt,{title:ti}).then(function(){toast('تم حفظ العنوان')},function(){toast('تعذّر الحفظ')})}}
+  else if(t.dataset.gc){Gal.patch(t.dataset.gc,{cat:t.value}).then(function(){toast('تم تغيير القسم')},function(){toast('تعذّر الحفظ')})}
+  else if(t.name==='type'){S.type=t.value;renderSlots();renderRecap()}
+  else if(t.id==='date'){S.date=t.value;S.start=null;renderSlots();renderRecap()}
+  else if(t.dataset.st){
+    var bk=S.bookings.filter(function(x){return x.id===t.dataset.st})[0];if(!bk){return}
+    if(t.value!=='cancelled'&&bk.status==='cancelled'&&!isFree(bk.date,bk.start,bk.dur,bk.id)){toast('لا يمكن إعادة التفعيل: الوقت محجوز بحجز آخر.');renderAdmin();return}
+    Store.patch(bk.id,{status:t.value}).then(function(){toast('تم تحديث الحالة')},function(){toast('تعذّر الحفظ')});
+  }
+});
+
+document.addEventListener('keydown',function(e){
+  if($('#lb').hidden){return}
+  if(e.key==='Escape'){closeLb()}
+  else if(e.key==='ArrowRight'){stepLb(-1)}
+  else if(e.key==='ArrowLeft'){stepLb(1)}
+});
+$('#lb').addEventListener('click',function(e){if(e.target===this){closeLb()}});
+
+renderStatic();renderSlots();renderRecap();
+Promise.all([
+  Store.init(),
+  window.claude.use('user').then(function(u){return u?u.canEdit():null}).catch(function(){return null})
+]).then(function(r){
+  S.adminOk=(r[1]===null)?true:!!r[1];
+  setView(S.view);renderAll();
+});
+})();
+</script>
+
+</body></html>
